@@ -1,0 +1,91 @@
+<!-- Janadhi Dissanayake  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+
+<head>
+    <title>Birds of Aotearoa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="birds.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type= "image/png" href="img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+</head>
+<!-- body -->
+
+<body>
+    <!-- Header -->
+    <header>
+        <div>
+            <h1>Birds of Aotearoa</h1>
+        </div>
+    </header>
+
+    <!-- aside for the flex container -->
+    <aside class="side-panel" id = "side-panel">
+        <!-- Home button -->
+        <button id="home-button" class="button"> HOME</button>
+
+        <!-- filter button -->
+        <button id="filter-button" class="button">CREATE NEW BIRD</button>
+        <!-- needs to show how many have been found -->
+        <p id="results" class = "results"> 68 results found </p>
+        <!-- divider line -->
+        <hr>
+        <!-- Status -->
+        <h2>Conservation Status</h2>
+        <div id ="status-grid" class="status-grid">
+            <div class = status-container id="circle1"></div>
+            <p >Not Threatened</p>
+            <div class = status-container id="circle2"></div>
+            <p>Naturally Uncommon</p>
+            <div class = status-container id="circle3"></div>
+            <p>Relicit</p>
+            <div class = status-container id="circle4"></div>
+            <p>Recovering</p>
+            <div class = status-container id="circle5"></div>
+            <p>Declining</p>
+            <div class = status-container id="circle6"></div>
+            <p>Nationally Increasing</p>
+            <div class = status-container id="circle7"></div>
+            <p>Nationally Vulnerable</p>
+            <div class = status-container id="circle8"></div>
+            <p>Nationally Endangered</p>
+            <div class = status-container id="circle9"></div>
+            <p>Nationally Critical</p>
+            <div class = status-container id="circle10"></div>
+            <p>Data Deficient</p>
+        </div>
+        <!-- need to also make sure that you cna click on these and will rearrange the flex contianer birds  -->
+
+        <!-- Show all -->
+
+        <!-- conservation status from DOC website -->
+        <div class="status-text">Conservation status from <a class="link"
+            href="https://www.doc.govt.nz/nature/conservation-status/">DOC</a> website
+        </div>
+        <!-- Theme -->
+
+    </aside>
+
+    <button id="dark-mode-toggle" class="dark-mode-toggle">
+        <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496"><path fill="currentColor" d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" transform="translate(-8 -8)"/></svg>
+    </button>
+    
+    <!-- Flex container to contain all the birds -->
+    <div id="flex-container" class="flex-container"></div>
+    <!-- footer -->
+    <footer>
+    Data licensed from 
+        <a class="link" href="https://www.birdsnz.org.nz/">Birds New
+    Zealand</a> 
+    for educational use within the University of Otago
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <%= data.english_name %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+
+<body>
+    <!-- header -->
+    <%- include('partials/header') %>
+        <aside>
+            <a class="button" href="/birds">Home</a>
+            <a class="button" href="/birds/create">Create New Bird</a>
+            <!-- don't need conservation status bar -->
+        </aside>
+        <!-- main -->
+        <main id="birds">
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-title">
+                        <p lang="mi">
+                            <%= data.scientific_name %>
+                        </p>
+                        <span>
+                            <%= data.photographer %>
+                        </span>
+                    </div>
+                    <img src="/images/<%= data.filename %>" alt="<%= data.english_name %>">
+                    <div class="circle" style="background: <%= data.status_colour %>"></div>
+                </div>
+                <div class="card-content">
+                    <h2 class="name_title" id = "name_title">
+                        <%= data.english_name %>
+                    </h2>
+                    <ul class="">
+                        <li>
+                            <b>Scientific Name</b><span>
+                                <%= data.scientific_name %>
+                            </span>
+                        </li>
+                        <li>
+                            <b>Family</b><span>
+                                <%= data.family %>
+                            </span>
+                        </li>
+                        <li>
+                            <b>Order</b><span>
+                                <%= data.order_name %>
+                            </span>
+                        </li>
+                        <li>
+                            <b>Status</b><span>
+                                <%= data.status_name %>
+                            </span>
+                        </li>
+                        <li>
+                            <b>Length</b><span>
+                                <%= data.length %> cm
+                            </span>
+                        </li>
+                        <li>
+                            <b>Weight</b><span>
+                                <%= data.weight %> g
+                            </span>
+                        </li>
+                    </ul>
+                    <!-- buttons -->
+                    <a class="button" href="/birds/<%= data.bird_id %>">View</a>
+                    <a class="button" href="/birds/<%= data.bird_id %>/edit">Edit</a>
+                    <a class="button" href="/birds/<%= data.bird_id %>/delete">Delete</a>
+                </div>
+            </div>
+        </main>
+        <!-- footer -->
+        <%- include('partials/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,324 @@
+/* global variables */
+:root {
+    --theme-main-dark: var(--clr-dark);
+    --theme-main: var(--clr-dark);
+    --theme-main-light: var(--clr-light);
+    --aside-width: 300px;
+    --card-width: 350px;
+    --clr-light: #F4FDD9;
+	--clr-dark: #2c3323;
+
+	/* colour pallete */
+	/* darks */
+	--ebony: #566246;
+	--jet: #373737;
+	--liver: #544343;
+	--burnswick-green: #29524A;
+
+	/* lights */
+	--khaki: #C5AFA0;
+	--light-green: #6A8D73;
+	--asparagus: #77966D;
+	--tea-green: #C7DFC5;
+	--light-yellow: #F4FDD9;
+	--naynza: #E4FFE1;
+
+	/* background-color: var(--light-yellow); */
+	--foreground: var(--clr-dark);
+	--background: var(--clr-light);
+
+	/* colors for status */
+	--Not-Threatened: #02a028;
+	--Naturally-Uncommon: #649a31;
+	--Relict: #99cb68;
+	--Recovering: #fecc33;
+	--Declining: #fe9a01;
+	--Nationally-Increasing: #c26967;
+	--Nationally-Vulnerable: #9b0000;
+	--Nationally-Endangered: #660032;
+	--Nationally-Critical: #320033;
+	--Extinct: black;
+	--Data-Deficient: black;
+}
+
+/* Dark mode */
+.darkmode {
+	--clr-light: #F4FDD9;
+	--clr-dark: #566246;
+	--clr-primary: #202302;
+	--clr-secondary: #00100d;
+	--clr-accent: #13140d;
+
+	--foreground: var(--clr-light);
+	--background: var(--clr-dark);
+	
+}
+
+.dark-mode-toggle {
+	position: absolute;
+	margin-top: -30px;
+	z-index: 100;
+	top: 5em;
+	right: 3em;
+	color: var(--clr-light);
+	border: 0px solid;
+	padding: 10px;
+	background: transparent;
+	cursor: pointer;
+	border-radius: 2px;
+	width: 50px;
+	height: 50px;
+
+
+}
+.dark-mode-toggle:hover{
+    background-color: var(--clr-dark); 
+	filter: brightness(1.2); 
+    transition: all 0.3s ease; 
+	transform: scale(1.03);  
+}
+
+
+h2{
+    color: var(--clr-light);
+}
+card-title{
+    color: var(--clr-dark); 
+}
+legend{
+    color: var(--clr-light);
+}
+label{
+    color: var(--clr-light);
+}
+
+p{
+    color: var(--clr-light);
+}
+
+
+
+/* grid layout */
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: var(--aside-width) 1fr;
+    transition: 0.2s;
+}
+header, footer {
+    grid-column: span 2;
+}
+/* Small screens (phones) */
+@media (max-width: 620px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content min-content 1fr min-content;
+    }
+    header, footer {
+        grid-column: span 1;
+    }
+    header h1 {
+        font-size: 30px !important;
+    }
+}
+
+/* flex layouts */
+header, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+aside {
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+}
+#birds {
+    padding: 32px;
+    /* flex-basis: calc(100vw - var(--aside-width)); */
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
+    gap: 16px;
+}
+.card:only-child {
+    grid-column: 1 / -1;
+}
+.card:only-child .card-image {
+    height: 50%;
+}
+.name_title{
+    color: var(--background);
+}
+.edit_name_title{
+    color: var(--clr-light);
+}
+li{
+    color: var(--background);
+}
+/* general styles */
+body {
+    background: var(--clr-dark);
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333;
+    
+}
+
+header, footer {
+    background-color: var(--clr-dark);
+    color: var(--clr-accent);
+    position: relative;
+}
+header img {
+    height: 50px;
+    margin-right: 16px;
+}
+header h1 {
+    font-size: 50px;
+}
+
+h1{
+    color: var(--clr-light);
+}
+/* form styles */
+aside {
+    background: var(--asparagus);
+    flex-basis: var(--aside-width);
+    padding: 16px;
+}
+label, select, input, .button {
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+}
+select, input, .button {
+    margin-bottom: 8px;
+    height: 32px;
+}
+.button {
+    background: var(--clr-dark);
+    color: var(--clr-light);
+    border: none;
+    border-radius: 4px;
+    font-size: large;
+    box-shadow: 1px 1px 4px #0007;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.button:hover {
+    background: var(--asparagus);
+}
+.button:active {
+    background: var(--clr-dark);
+}
+
+/* bird cards */
+#birds {
+    box-shadow: inset 0px 0px 8px #0007;
+}
+.card {
+    box-shadow: 2px 2px 8px #0007;
+    background: white;
+    border-radius: 5px;
+    /* max-width: var(--card-width); */
+    /* flex-grow: 1; */
+    /* max-width: 100%; */
+    transition: 0.5s;
+    background-color: var(--foreground);
+    color ;
+}
+.card-image {
+    position: relative;
+}
+.card-image img {
+    border-radius: 5px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.card-image .card-title {
+    background: linear-gradient(0deg, #000a 20%, #0000 100%);
+    /* background: #0007; */
+    position: absolute;
+    width: calc(100% - 16px);
+    height: 50%;
+    bottom: 0px;
+    padding-left: 16px;
+    color: var(--clr-light);
+}
+.card-image .card-title p {
+    position: absolute;
+    font-size: x-large;
+    bottom:10px;
+}
+.card-image .card-title span {
+    position: absolute;
+    font-size: medium;
+    bottom: 8px;
+}
+
+/* card content style */
+.card-content {
+    padding: 20px;
+}
+h2 {
+    margin: 0;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+li {
+    display: flex;
+}
+li b {
+    width: 115px;
+}
+li span {
+    width: calc(100% - 115px);
+}
+
+/* conservation status circles */
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    right: 16px;
+    bottom: -25px;
+    display: block;
+    z-index: 100;
+    border: 4px solid white;
+}
+
+.circle-small {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 8px;
+    border: 1px solid white;
+}
+
+.ved-buttons{
+    margin-top: 10px;
+
+}
+
+h1#error{
+
+    text-align: center;
+}

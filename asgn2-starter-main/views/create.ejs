@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Bird</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<!-- need to create a the rest of the ejs -->
+
+<body>
+    <!-- the header from home  -->
+    <%- include('partials/header') %>
+
+        <aside>
+            <!-- if Jquery is not there we need to include it  -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+            <!-- home button and create button -->
+            <a class="button" href="/birds">Home</a>
+            <a class="button" href="/birds/create">Create New Bird</a>
+
+            <h2>Conservation Status</h2>
+            <ul id="statusArrList">
+                <!-- where the generated content will go when the page is loaded  -->
+            </ul>
+
+            <script>
+                // An array of objects for each conservation status, including color and name
+                const statusArr = [
+                    { color: '#02a028', name: 'Not Threatened' },
+                    { color: '#649a31', name: 'Naturally Uncommon' },
+                    { color: '#99cb68', name: 'Relict' },
+                    { color: '#fecc33', name: 'Recovering' },
+                    { color: '#fe9a01', name: 'Declining' },
+                    { color: '#c26967', name: 'Nationally Increasing' },
+                    { color: '#9b0000', name: 'Nationally Vulnerable' },
+                    { color: '#660032', name: 'Nationally Endangered' },
+                    { color: '#320033', name: 'Nationally Critical' },
+                    { color: '#000000', name: 'Extinct' },
+                    { color: '#000000', name: 'Data Deficient' }
+                ];
+
+                //  appending each item to the ul
+                $(document).ready(function () {
+                    statusArr.forEach(function (status) {
+                        $('#statusArrList').append(`
+                <li style="position: relative;">
+                    <div class="circle-small" style="background: ${status.color}"></div>
+                    <span>${status.name}</span>
+                </li>
+            `);
+                    });
+                });
+            </script>
+            <p>
+                Conservation status from <a href="https://www.doc.govt.nz/nature/conservation-status/">DOC website</a>
+            </p>
+        </aside>
+        <!-- main -->
+        <main id="birds">
+            <div>
+                <h2></h2>
+                <form action="/birds/create" method="POST" enctype="multipart/form-data">
+                    <fieldset>
+                        <legend>Common Names</legend>
+                        <label for="primary_name">Primary Name</label>
+                        <input type="text" name="primary_name" required="">
+                        <label for="english_name">English Name</label>
+                        <input type="text" name="english_name" required="">
+                    </fieldset>
+                    <!-- Taxonomy -->
+                    <fieldset>
+                        <legend>Taxonomy</legend>
+                        <label for="scientific_name">Scientific Name</label>
+                        <input type="text" name="scientific_name" required="">
+                        <label for="order_name">Order</label>
+                        <input type="text" name="order_name" required="">
+                        <label for="family">Family</label>
+                        <input type="text" name="family" required="">
+                    </fieldset>
+                    <!-- Size -->
+                    <fieldset>
+                        <!-- minimum is the  -->
+                        <legend>Size</legend>
+                        <label for="length">Length (cm)</label>
+                        <input type="number" name="length" min="0">
+                        <label for="weight">Weight (g)</label>
+                        <input type="number" name="weight" min="0">
+
+                    </fieldset>
+                    <!-- conservation -->
+                    <fieldset>
+                        <legend>Conservation</legend>
+                        <label for="status_name">Status</label>
+                        <select name="status_name" id="status">
+                            <option value="Not Threatened">Not Threatened</option>
+                            <option value="Naturally Uncommon">Naturally Uncommon</option>
+                            <option value="Relict">Relict</option>
+                            <option value="Recovering">Recovering</option>
+                            <option value="Declining">Declining</option>
+                            <option value="Nationally Increasing">Nationally Increasing</option>
+                            <option value="Nationally Vulnerable">Nationally Vulnerable</option>
+                            <option value="Nationally Endangered">Nationally Endangered</option>
+                            <option value="Nationally Critical">Nationally Critical</option>
+                            <option value="Extinct">Extinct</option>
+                            <option value="Data Deficient">Data Deficient</option>
+                        </select>
+                    </fieldset>
+                    <!-- photos  -->
+                    <fieldset>
+                        <legend>Photo</legend>
+                        <label for="photographer">Photo Credit</label>
+                        <input type="text" name="photographer" required>
+                        <label for="photo_upload">Upload New Photo</label>
+                        <input type="file" name="photo_upload" id="photo_upload">
+                        <label for="photo_source">Photo Preview</label>
+                        <img id="upload_preview" src="" alt="Photo of" style="max-width: 100%; max-height: 100%;" />
+                        <input id="upload_source" type="text" name="photo_source" value="" readonly="readonly">
+                    </fieldset>
+                    <!-- script for image preview -->
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const uploadImg = document.getElementById('photo_upload');
+                            const previewImg = document.getElementById('upload_preview');
+                            uploadImg.addEventListener('change', function () {
+                                const chosenFile = uploadImg.files[0];
+                                if (chosenFile) {
+                                    const objectURL = URL.createObjectURL(chosenFile);
+                                    previewImg.src = objectURL;
+                                } else {
+                                    previewImg.src = "";
+                                }
+                            });
+                        });
+                    </script>
+            <!-- button -->
+                    <button class="button" type="submit">Save Bird </button>
+                </form>
+            </div>
+        </main>
+        <!-- footer -->
+        <%- include('partials/footer')%>
+</body>

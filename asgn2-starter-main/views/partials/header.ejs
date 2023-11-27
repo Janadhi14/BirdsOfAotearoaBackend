@@ -1,0 +1,39 @@
+<header>
+    <img src="/kiwi-logo.svg" alt="Kiwi bird logo">
+    <h1 class = "title" class = "title" >Birds of Aotearoa</h1>
+    <button id="dark-mode-toggle" class="dark-mode-toggle">
+        <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496">
+            <path fill="currentColor"
+                d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z"
+                transform="translate(-8 -8)" />
+        </svg>
+        <script>
+            let darkMode = localStorage.getItem('darkMode');
+            const darkModeToggle = document.querySelector('#dark-mode-toggle');
+    
+            // enable dark mode function
+            const enableDarkMode = () => {
+                document.body.classList.add('darkmode');
+                localStorage.setItem('darkMode', 'enabled');
+            }
+    
+            // disable dark mode function
+            const disableDarkMode = () => {
+                document.body.classList.remove('darkmode');
+                localStorage.setItem('darkMode', null);
+            }
+    
+            if (darkMode === 'enabled') {
+                enableDarkMode();
+            }
+    
+            darkModeToggle.addEventListener('click', () => {
+                darkMode = localStorage.getItem('darkMode');
+                if (darkMode !== 'enabled') {
+                    enableDarkMode();
+                } else {
+                    disableDarkMode();
+                }
+            });
+        </script>
+</header>
