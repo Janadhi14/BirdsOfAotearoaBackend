@@ -1,5 +1,4 @@
 # Back-end for Birds of Aotearoa 
-<img width="1726" alt="Screenshot 2023-11-27 at 3 45 51 PM" src="https://github.com/Janadhi14/BirdsOfAotearoaBackend/assets/100277240/e024c06e-f2d7-45d4-a5ab-9bff3a6410e6">
 <img width="1063" alt="Screenshot 2023-11-27 at 3 46 23 PM" src="https://github.com/Janadhi14/BirdsOfAotearoaBackend/assets/100277240/cc6051cd-cd33-4009-9c1b-cf1c9e981ce2">
 <img width="1728" alt="Screenshot 2023-11-27 at 3 46 35 PM" src="https://github.com/Janadhi14/BirdsOfAotearoaBackend/assets/100277240/0b55b3a7-e3bc-4692-a714-37df8de38272">
 
